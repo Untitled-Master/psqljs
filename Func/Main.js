@@ -1,19 +1,37 @@
-import pool from "../db.js";
+import { Query, Kill } from "./Query.js";
+import { testConnection } from "./Connection.js";
 
-async function Query(sql) {
-    const result = await pool.query(sql);
-    return result.rows;
-}
+import { findAll, findOne, findMany } from "./Select.js";
 
-async function testConnection() {
-    try {
-        const result = await Query("SELECT 1");
-        if(result.length > 0) {
-            console.log("Database connection successful.");
-        }
-    } catch (error) {
-        console.error("Error testing connection:", error);
-    }
-}
+import { Insert } from "./Insert.js";
+import { Update } from "./Update.js";
+import { Remove } from "./Delete.js";
 
-export default { Query, testConnection };
+import {
+    CreateTable,
+    DeleteTable,
+    TableExists,
+    GetTables,
+    GetColumns
+} from "./Table.js";
+
+
+export default {
+    Query,
+    Kill,
+    testConnection,
+
+    findAll,
+    findOne,
+    findMany,
+
+    Insert,
+    Update,
+    Remove,
+
+    CreateTable,
+    DeleteTable,
+    TableExists,
+    GetTables,
+    GetColumns
+};
