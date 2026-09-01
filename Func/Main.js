@@ -1,4 +1,4 @@
-import { Query, Kill } from "./Query.js";
+import { Query, kill } from "./Query.js";
 import { testConnection } from "./Connection.js";
 
 import { findAll, findOne, findMany } from "./Select.js";
@@ -16,9 +16,9 @@ import {
 } from "./Table.js";
 
 
-export default {
+const psql = {
     Query,
-    Kill,
+    kill,
     testConnection,
 
     findAll,
@@ -35,3 +35,5 @@ export default {
     GetTables,
     GetColumns
 };
+
+export default psql;

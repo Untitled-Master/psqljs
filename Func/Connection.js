@@ -10,7 +10,5 @@ export async function testConnection() {
     } catch (error) {
         console.error("Error testing connection:", error);
         return false;
-    } finally {
-        await pool.end(); // Close the pool after testing the connection
     }
 }

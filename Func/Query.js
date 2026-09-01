@@ -6,6 +6,10 @@ export async function Query(sql, values = []) {
     return result.rows;
 }
 
-export async function Kill() {
-    await pool.end();
+export async function kill() {
+    try {
+        if (!pool.ending && !pool.ended) await pool.end();
+    } catch {}
+    try { process.stdin.pause(); } catch {}
+    try { process.stdin.destroy(); } catch {}
 }
